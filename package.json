@@ -1,0 +1,31 @@
+{
+  "name": "x-data-spreadsheet-ie",
+  "version": "1.0.0",
+  "description": "a javascript xpreadsheet(1.0.35)",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "nyc ./node_modules/mocha/bin/mocha --require @babel/register test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMHai/x-data-spreadsheet-ie.git"
+  },
+  "keywords": [
+    "javascript",
+    "spreadsheet",
+    "canvas",
+    "ie"
+  ],
+  "author": "ch1n3h@163.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CMHai/x-data-spreadsheet-ie/issues"
+  },
+  "homepage": "https://github.com/CMHai/x-data-spreadsheet-ie#readme"
+}
