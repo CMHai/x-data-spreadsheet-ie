@@ -87,7 +87,7 @@ var DropdownFormat = /*#__PURE__*/function (_Dropdown) {
     value: function setTitle(key) {
       for (var i = 0; i < _format.baseFormats.length; i += 1) {
         if (_format.baseFormats[i].key === key) {
-          this.title.html(_format.baseFormats[i].title);
+          this.title.html(_format.baseFormats[i].title());
         }
       }
 

@@ -283,7 +283,6 @@ var Toolbar = /*#__PURE__*/function () {
     this.moreEl = buildButton("".concat((0, _locale.t)('toolbar.more'))).child(this.ddMore.el).hide()];
     this.el = (0, _element.h)('div', "".concat(_config.cssPrefix, "-toolbar"));
     this.btns = (_h = (0, _element.h)('div', "".concat(_config.cssPrefix, "-toolbar-btns"))).children.apply(_h, _toConsumableArray(this.btnChildren));
-
     this.el.child(this.btns);
     if (isHide) this.el.hide();
     bindDropdownChange.call(this);

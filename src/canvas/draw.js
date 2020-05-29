@@ -331,7 +331,7 @@ var Draw = /*#__PURE__*/function () {
       txts.forEach(function (it) {
         var txtWidth = ctx.measureText(it).width;
 
-        if (textWrap && txtWidth > biw) {
+        if (textWrap && txtWidth > npx(biw)) {
           var textLine = {
             w: 0,
             len: 0,
@@ -339,7 +339,7 @@ var Draw = /*#__PURE__*/function () {
           };
 
           for (var i = 0; i < it.length; i += 1) {
-            if (textLine.w >= biw) {
+            if (textLine.w >= npx(biw)) {
               ntxts.push(it.substr(textLine.start, textLine.len));
               textLine = {
                 w: 0,

@@ -7,6 +7,8 @@ exports.infixExprToSuffixExpr = exports["default"] = void 0;
 
 var _alphabet = require("./alphabet");
 
+var _helper = require("./helper");
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -189,28 +191,44 @@ var evalSuffixExpr = function evalSuffixExpr(srcStack, formulaMap, cellRender, c
 
     if (expr === '+') {
       var top = stack.pop();
-      stack.push(Number(stack.pop()) + Number(top));
+      stack.push((0, _helper.numberCalc)('+', stack.pop(), top));
     } else if (expr === '-') {
       if (stack.length === 1) {
         var _top = stack.pop();
 
-        stack.push(Number(_top) * -1);
+        stack.push((0, _helper.numberCalc)('*', _top, -1));
       } else {
         var _top2 = stack.pop();
 
-        stack.push(Number(stack.pop()) - Number(_top2));
+        stack.push((0, _helper.numberCalc)('-', stack.pop(), _top2));
       }
     } else if (expr === '*') {
-      stack.push(Number(stack.pop()) * Number(stack.pop()));
+      stack.push((0, _helper.numberCalc)('*', stack.pop(), stack.pop()));
     } else if (expr === '/') {
       var _top3 = stack.pop();
 
-      stack.push(Number(stack.pop()) / Number(_top3));
+      stack.push((0, _helper.numberCalc)('/', stack.pop(), _top3));
     } else if (fc === '=' || fc === '>' || fc === '<') {
       var _top4 = stack.pop();
 
-      var Fn = Function;
-      stack.push(new Fn("return ".concat(stack.pop(), " ").concat(expr === '=' ? '==' : expr, " ").concat(_top4))());
+      if (!Number.isNaN(_top4)) _top4 = Number(_top4);
+      var left = stack.pop();
+      if (!Number.isNaN(left)) left = Number(left);
+      var ret = false;
+
+      if (fc === '=') {
+        ret = left === _top4;
+      } else if (expr === '>') {
+        ret = left > _top4;
+      } else if (expr === '>=') {
+        ret = left >= _top4;
+      } else if (expr === '<') {
+        ret = left < _top4;
+      } else if (expr === '<=') {
+        ret = left <= _top4;
+      }
+
+      stack.push(ret);
     } else if (Array.isArray(expr)) {
       var _expr = _slicedToArray(expr, 2),
           formula = _expr[0],

@@ -153,7 +153,8 @@ var defaultSettings = {
       size: 10,
       bold: false,
       italic: false
-    }
+    },
+    format: 'normal'
   }
 };
 var toolbarHeight = 41;
@@ -1473,7 +1474,8 @@ var DataProxy = /*#__PURE__*/function () {
           rows = this.rows,
           cols = this.cols,
           freeze = this.freeze,
-          exceptRowSet = this.exceptRowSet;
+          exceptRowSet = this.exceptRowSet; // console.log('scroll:', scroll, ', freeze:', freeze)
+
       var ri = scroll.ri,
           ci = scroll.ci;
 

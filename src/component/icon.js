@@ -37,7 +37,7 @@ var Icon = /*#__PURE__*/function (_Element) {
 
     _this = _possibleConstructorReturn(this, (Icon.__proto__ || Object.getPrototypeOf(Icon)).call(this, 'div', "".concat(_config.cssPrefix, "-icon")));
     _this.iconNameEl = (0, _element.h)('div', "".concat(_config.cssPrefix, "-icon-img ").concat(name));
-    // debugger
+
     _this.child(_this.iconNameEl);
 
     return _this;

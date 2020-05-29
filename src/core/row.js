@@ -235,9 +235,9 @@ var Rows = /*#__PURE__*/function () {
                             xn = n - 1; // if (isAdd) xn -= 1;
                           } else {
                             yn = n - 1;
-                          } // console.log('xn:', xn, ', yn:', yn, word, expr2expr(word, xn, yn));
+                          }
 
-
+                          if (/^\d+$/.test(word)) return word;
                           return (0, _alphabet.expr2expr)(word, xn, yn);
                         });
                       } else {

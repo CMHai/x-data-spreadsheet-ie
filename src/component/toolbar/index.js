@@ -85,6 +85,7 @@ function buildDivider() {
 
 function initBtns2() {
   var _this = this;
+
   this.btns2 = [];
   this.items.forEach(function (it) {
     if (Array.isArray(it)) {
@@ -93,8 +94,8 @@ function initBtns2() {
         var rect = el.box();
 
         var _el$computedStyle = el.computedStyle(),
-          marginLeft = _el$computedStyle.marginLeft,
-          marginRight = _el$computedStyle.marginRight;
+            marginLeft = _el$computedStyle.marginLeft,
+            marginRight = _el$computedStyle.marginRight;
 
         _this.btns2.push([el, rect.width + parseInt(marginLeft, 10) + parseInt(marginRight, 10)]);
       });
@@ -102,8 +103,8 @@ function initBtns2() {
       var rect = it.box();
 
       var _it$computedStyle = it.computedStyle(),
-        marginLeft = _it$computedStyle.marginLeft,
-        marginRight = _it$computedStyle.marginRight;
+          marginLeft = _it$computedStyle.marginLeft,
+          marginRight = _it$computedStyle.marginRight;
 
       _this.btns2.push([it, rect.width + parseInt(marginLeft, 10) + parseInt(marginRight, 10)]);
     }
@@ -114,24 +115,22 @@ function moreResize() {
   var _btns$html, _moreBtns$html;
 
   var el = this.el,
-    btns = this.btns,
-    moreEl = this.moreEl,
-    btns2 = this.btns2;
-
+      btns = this.btns,
+      moreEl = this.moreEl,
+      btns2 = this.btns2;
   var _moreEl$dd = moreEl.dd,
-    moreBtns = _moreEl$dd.moreBtns,
-    contentEl = _moreEl$dd.contentEl;
+      moreBtns = _moreEl$dd.moreBtns,
+      contentEl = _moreEl$dd.contentEl;
   el.css('width', "".concat(this.widthFn() - 60, "px"));
   var elBox = el.box();
   var sumWidth = 160;
   var sumWidth2 = 12;
   var list1 = [];
   var list2 = [];
-  
   btns2.forEach(function (_ref2, index) {
     var _ref3 = _slicedToArray(_ref2, 2),
-      it = _ref3[0],
-      w = _ref3[1];
+        it = _ref3[0],
+        w = _ref3[1];
 
     sumWidth += w;
 
@@ -144,11 +143,11 @@ function moreResize() {
   });
 
   (_btns$html = btns.html('')).children.apply(_btns$html, list1);
- 
+
   (_moreBtns$html = moreBtns.html('')).children.apply(_moreBtns$html, list2);
 
   contentEl.css('width', "".concat(sumWidth2, "px"));
- 
+
   if (list2.length > 0) {
     moreEl.show();
   } else {
@@ -166,102 +165,14 @@ var Toolbar = /*#__PURE__*/function () {
 
     this.data = data;
 
-    this.change = function () { };
+    this.change = function () {};
 
     this.widthFn = widthFn;
     this.isHide = isHide;
     var style = data.defaultStyle();
     this.items = [[this.undoEl = new _undo["default"](), this.redoEl = new _redo["default"](), new _print["default"](), this.paintformatEl = new _paintformat["default"](), this.clearformatEl = new _clearformat["default"]()], buildDivider(), [this.formatEl = new _format["default"]()], buildDivider(), [this.fontEl = new _font["default"](), this.fontSizeEl = new _font_size["default"]()], buildDivider(), [this.boldEl = new _bold["default"](), this.italicEl = new _italic["default"](), this.underlineEl = new _underline["default"](), this.strikeEl = new _strike["default"](), this.textColorEl = new _text_color["default"](style.color)], buildDivider(), [this.fillColorEl = new _fill_color["default"](style.bgcolor), this.borderEl = new _border["default"](), this.mergeEl = new _merge["default"]()], buildDivider(), [this.alignEl = new _align["default"](style.align), this.valignEl = new _valign["default"](style.valign), this.textwrapEl = new _textwrap["default"]()], buildDivider(), [this.freezeEl = new _freeze["default"](), this.autofilterEl = new _autofilter["default"](), this.formulaEl = new _formula["default"](), this.moreEl = new _more["default"]()]];
-
     this.el = (0, _element.h)('div', "".concat(_config.cssPrefix, "-toolbar"));
     this.btns = (0, _element.h)('div', "".concat(_config.cssPrefix, "-toolbar-btns"));
-
-    // this.undoEl = new _undo["default"]();
-    // this.redoEl = new _redo["default"]();
-    // this.paintformatEl = new _paintformat["default"]();
-    // this.clearformatEl = new _clearformat["default"]();
-    // this.formatEl = new _format["default"]();
-    // this.fontEl = new _font["default"]();
-    // this.fontSizeEl = new _font_size["default"]();
-    // this.boldEl = new _bold["default"]();
-    // this.italicEl = new _italic["default"]();
-    // this.underlineEl = new _underline["default"]()
-    // this.strikeEl = new _strike["default"]()
-    // this.textColorEl = new _text_color["default"](style.color)
-    // this.fillColorEl = new _fill_color["default"](style.bgcolor)
-    // this.borderEl = new _border["default"]()
-    // this.mergeEl = new _merge["default"]()
-    // this.alignEl = new _align["default"](style.align)
-    // this.valignEl = new _valign["default"](style.valign)
-    // this.textwrapEl = new _textwrap["default"]()
-    // this.freezeEl = new _freeze["default"]()
-    // this.autofilterEl = new _autofilter["default"]()
-    // this.formulaEl = new _formula["default"]()
-    // this.moreEl = new _more["default"]()
-
-    // var br = buildDivider();
-
-    // [this.undoEl, this.redoEl, new _print["default"](), this.paintformatEl, this.clearformatEl].forEach(function (i, index) {
-    //   console.log('item00', i)
-    //   _this2.btns.child(i.el);
-    //   i.change = function () {
-    //     _this2.change.apply(_this2, arguments);
-    //   };
-    // });
-    // _this2.btns.child(br.el);
-
-    // [this.formatEl].forEach(function (i, index) {
-    //   console.log('item00', i)
-    //   _this2.btns.child(i.el);
-    //   i.change = function () {
-    //     _this2.change.apply(_this2, arguments);
-    //   };
-    // });
-    // _this2.btns.child(br.el);
-
-    // [this.fontEl, this.fontSizeEl].forEach(function (i, index) {
-    //   console.log('item00', i)
-    //   _this2.btns.child(i.el);
-    //   i.change = function () {
-    //     _this2.change.apply(_this2, arguments);
-    //   };
-    // });
-    // _this2.btns.child(br.el);
-
-    // [this.boldEl, this.italicEl, this.underlineEl, this.strikeEl, this.textColorEl].forEach(function (i, index) {
-    //   console.log('item00', i)
-    //   _this2.btns.child(i.el);
-    //   i.change = function () {
-    //     _this2.change.apply(_this2, arguments);
-    //   };
-    // });
-    // _this2.btns.child(br.el);
-
-    // [this.fillColorEl, this.borderEl, this.mergeEl].forEach(function (i, index) {
-    //   console.log('item00', i)
-    //   _this2.btns.child(i.el);
-    //   i.change = function () {
-    //     _this2.change.apply(_this2, arguments);
-    //   };
-    // });
-    // _this2.btns.child(br.el);
-    // [this.alignEl, this.valignEl, this.textwrapEl].forEach(function (i, index) {
-    //   console.log('item00', i)
-    //   _this2.btns.child(i.el);
-    //   i.change = function () {
-    //     _this2.change.apply(_this2, arguments);
-    //   };
-    // });
-    // _this2.btns.child(br.el);
-    // [this.freezeEl, this.autofilterEl, this.formulaEl, this.moreEl].forEach(function (i, index) {
-    //   console.log('item00', i)
-    //   _this2.btns.child(i.el);
-    //   i.change = function () {
-    //     _this2.change.apply(_this2, arguments);
-    //   };
-    // });
-    // _this2.btns.child(br.el);
-
 
     if (!!window.ActiveXObject || "ActiveXObject" in window) {
       var IE =true;
@@ -294,7 +205,21 @@ var Toolbar = /*#__PURE__*/function () {
       });
     }
 
+    // this.items.forEach(function (it) {
+    //   if (Array.isArray(it)) {
+    //     it.forEach(function (i) {
+    //       _this2.btns.child(i.el);
+
+    //       i.change = function () {
+    //         _this2.change.apply(_this2, arguments);
+    //       };
+    //     });
+    //   } else {
+    //     _this2.btns.child(it.el);
+    //   }
+    // });
     this.el.child(this.btns);
+
     if (isHide) {
       this.el.hide();
     } else {
@@ -337,8 +262,7 @@ var Toolbar = /*#__PURE__*/function () {
     value: function reset() {
       if (this.isHide) return;
       var data = this.data;
-      var style = data.getSelectedCellStyle();
-      var cell = data.getSelectedCell(); // console.log('canUndo:', data.canUndo());
+      var style = data.getSelectedCellStyle(); // console.log('canUndo:', data.canUndo());
 
       this.undoEl.setState(!data.canUndo());
       this.redoEl.setState(!data.canRedo());
@@ -346,7 +270,9 @@ var Toolbar = /*#__PURE__*/function () {
       this.autofilterEl.setState(!data.canAutofilter()); // this.mergeEl.disabled();
       // console.log('selectedCell:', style, cell);
 
-      var font = style.font;
+      var font = style.font,
+          format = style.format;
+      this.formatEl.setState(format);
       this.fontEl.setState(font.name);
       this.fontSizeEl.setState(font.size);
       this.boldEl.setState(font.bold);
@@ -360,12 +286,6 @@ var Toolbar = /*#__PURE__*/function () {
       this.textwrapEl.setState(style.textwrap); // console.log('freeze is Active:', data.freezeIsActive());
 
       this.freezeEl.setState(data.freezeIsActive());
-
-      if (cell) {
-        if (cell.format) {
-          this.formatEl.setState(cell.format);
-        }
-      }
     }
   }]);
 

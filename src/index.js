@@ -1,6 +1,6 @@
 "use strict";
 
-require("./polyfill");
+require("babel-polyfill");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -124,20 +124,20 @@ var Spreadsheet = /*#__PURE__*/function () {
   }, {
     key: "loadData",
     value: function loadData(data) {
-      // const d = Array.isArray(data) ? data[0] : data;
       var ds = Array.isArray(data) ? data : [data];
+      this.bottombar.clear();
+      this.datas = [];
 
       if (ds.length > 0) {
-        ds[0].name = ds[0].name || this.data.name;
-
-        for (var i = 1; i < ds.length; i += 1) {
+        for (var i = 0; i < ds.length; i += 1) {
           var it = ds[i];
-          var nd = this.addSheet(it.name, false);
+          var nd = this.addSheet(it.name, i === 0);
           nd.setData(it);
-        }
 
-        this.bottombar.renameItem(0, ds[0].name);
-        this.sheet.loadData(ds[0]);
+          if (i === 0) {
+            this.sheet.resetData(nd);
+          }
+        }
       }
 
       return this;
@@ -148,6 +148,19 @@ var Spreadsheet = /*#__PURE__*/function () {
       return this.datas.map(function (it) {
         return it.getData();
       });
+    }
+  }, {
+    key: "cellText",
+    value: function cellText(ri, ci, text) {
+      var sheetIndex = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+      this.datas[sheetIndex].setCellText(ri, ci, text, 'finished');
+      return this;
+    }
+  }, {
+    key: "reRender",
+    value: function reRender() {
+      this.sheet.table.render();
+      return this;
     }
   }, {
     key: "on",

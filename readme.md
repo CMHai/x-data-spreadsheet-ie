@@ -33,7 +33,13 @@
 npm install x-data-spreadsheet-ie
 ```
 
+## 来源
+
 ```html
+  基于x-data-spreadsheet 兼容ie11
+```
+
+<!-- ```html
 <div id="x-spreadsheet-demo"></div>
 ```
 
@@ -115,7 +121,7 @@ import zhCN from 'x-data-spreadsheet-ie/dist/locale/zh-cn';
 
 Spreadsheet.locale('zh-cn', zhCN);
 new Spreadsheet(document.getElementById('xss-demo'));
-```
+``` -->
 <!-- ```html -->
 <!-- Import via CDN -->
 <!-- <link rel="stylesheet" href="https://unpkg.com/x-data-spreadsheet@1.0.13/dist/xspreadsheet.css">

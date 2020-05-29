@@ -244,6 +244,18 @@ var Bottombar = /*#__PURE__*/function () {
       this.updateFunc(index, value);
     }
   }, {
+    key: "clear",
+    value: function clear() {
+      var _this7 = this;
+
+      this.items.forEach(function (it) {
+        _this7.menuEl.removeChild(it.el);
+      });
+      this.items = [];
+      this.dataNames = [];
+      this.moreEl.reset(this.dataNames);
+    }
+  }, {
     key: "deleteItem",
     value: function deleteItem() {
       var activeEl = this.activeEl,

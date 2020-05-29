@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.numberCalc = numberCalc;
 exports["default"] = void 0;
 
 function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
@@ -127,6 +128,43 @@ function arrayEquals(a1, a2) {
   return true;
 }
 
+function digits(a) {
+  var v = "".concat(a);
+  var ret = 0;
+  var flag = false;
+
+  for (var i = 0; i < v.length; i += 1) {
+    if (flag === true) ret += 1;
+    if (v.charAt(i) === '.') flag = true;
+  }
+
+  return ret;
+}
+
+function numberCalc(type, a1, a2) {
+  if (Number.isNaN(a1) || Number.isNaN(a2)) {
+    return a1 + type + a2;
+  }
+
+  var al1 = digits(a1);
+  var al2 = digits(a2);
+  var num1 = Number(a1);
+  var num2 = Number(a2);
+  var ret = 0;
+
+  if (type === '-') {
+    ret = num1 - num2;
+  } else if (type === '+') {
+    ret = num1 + num2;
+  } else if (type === '*') {
+    ret = num1 * num2;
+  } else if (type === '/') {
+    ret = num1 / num2;
+  }
+
+  return ret.toFixed(Math.max(al1, al2));
+}
+
 var _default = {
   cloneDeep: cloneDeep,
   merge: function merge() {
@@ -142,6 +180,7 @@ var _default = {
   rangeEach: rangeEach,
   rangeSum: rangeSum,
   rangeReduceIf: rangeReduceIf,
-  deleteProperty: deleteProperty
+  deleteProperty: deleteProperty,
+  numberCalc: numberCalc
 };
 exports["default"] = _default;

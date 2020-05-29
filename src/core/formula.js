@@ -7,6 +7,8 @@ exports.baseFormulas = exports.formulas = exports.formulam = exports["default"] 
 
 var _locale = require("../locale/locale");
 
+var _helper = require("./helper");
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -33,7 +35,7 @@ var baseFormulas = [{
   title: (0, _locale.tf)('formula.sum'),
   render: function render(ary) {
     return ary.reduce(function (a, b) {
-      return Number(a) + Number(b);
+      return (0, _helper.numberCalc)('+', a, b);
     }, 0);
   }
 }, {

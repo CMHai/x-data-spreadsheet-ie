@@ -41,9 +41,10 @@ var SelectorElement = /*#__PURE__*/function () {
     this.el = (0, _element.h)('div', "".concat(_config.cssPrefix, "-selector")).css('z-index', "".concat(startZIndex)).children(this.areaEl, this.clipboardEl, this.autofillEl).hide();
 
     if (useHideInput) {
-      this.hideInput = (0, _element.h)('input', '').on('input', function (evt) {
+      this.hideInput = (0, _element.h)('input', '').on('compositionend', function (evt) {
         _this.inputChange(evt.target.value);
       });
+      this.el.child(this.hideInputDiv = (0, _element.h)('div', 'hide-input').child(this.hideInput));
       this.el.child(this.hideInputDiv = (0, _element.h)('div', 'hide-input').child(this.hideInput));
     }
 

@@ -15,6 +15,8 @@ var _draw = require("../canvas/draw");
 
 var _table = require("./table");
 
+var _locale = require("../locale/locale");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
@@ -43,6 +45,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 // 300 => 2479 x 3508
 // 96 * cm / 2.54 , 96 * cm / 2.54
 var PAGER_SIZES = [['A3', 11.69, 16.54], ['A4', 8.27, 11.69], ['A5', 5.83, 8.27], ['B4', 9.84, 13.90], ['B5', 6.93, 9.84]];
+var PAGER_ORIENTATIONS = ['landscape', 'portrait'];
 
 function inches2px(inc) {
   return 96 * inc;
@@ -60,27 +63,47 @@ function pagerSizeChange(evt) {
   var paper = this.paper;
   var value = evt.target.value;
   var ps = PAGER_SIZES[value];
-  paper.width = inches2px(ps[1]);
-  paper.height = inches2px(ps[2]); // console.log('paper:', ps, paper);
+  paper.w = inches2px(ps[1]);
+  paper.h = inches2px(ps[2]); // console.log('paper:', ps, paper);
 
+  this.preview();
+}
+
+function pagerOrientationChange(evt) {
+  var paper = this.paper;
+  var value = evt.target.value;
+  var v = PAGER_ORIENTATIONS[value];
+  paper.orientation = v;
   this.preview();
 }
 
 var Print = /*#__PURE__*/function () {
   function Print(data) {
-    var _h;
+    var _h, _h2;
 
     _classCallCheck(this, Print);
 
     this.paper = {
-      width: inches2px(PAGER_SIZES[0][1]),
-      height: inches2px(PAGER_SIZES[0][2]),
-      padding: 50
+      w: inches2px(PAGER_SIZES[0][1]),
+      h: inches2px(PAGER_SIZES[0][2]),
+      padding: 50,
+      orientation: PAGER_ORIENTATIONS[0],
+
+      get width() {
+        return this.orientation === 'landscape' ? this.h : this.w;
+      },
+
+      get height() {
+        return this.orientation === 'landscape' ? this.w : this.h;
+      }
+
     };
     this.data = data;
-    this.el = (0, _element.h)('div', "".concat(_config.cssPrefix, "-print")).children((0, _element.h)('div', "".concat(_config.cssPrefix, "-print-bar")).children((0, _element.h)('div', '-title').child('Print settings'), (0, _element.h)('div', '-right').children((0, _element.h)('div', "".concat(_config.cssPrefix, "-buttons")).children(new _button["default"]('cancel').on('click', btnClick.bind(this, 'cancel')), new _button["default"]('next', 'primary').on('click', btnClick.bind(this, 'next'))))), (0, _element.h)('div', "".concat(_config.cssPrefix, "-print-content")).children(this.contentEl = (0, _element.h)('div', '-content'), (0, _element.h)('div', '-sider').child((0, _element.h)('form', '').children((0, _element.h)('fieldset', '').children((0, _element.h)('label', '').child('Pager size'), (_h = (0, _element.h)('select', '')).children.apply(_h, _toConsumableArray(PAGER_SIZES.map(function (it, index) {
+    this.el = (0, _element.h)('div', "".concat(_config.cssPrefix, "-print")).children((0, _element.h)('div', "".concat(_config.cssPrefix, "-print-bar")).children((0, _element.h)('div', '-title').child('Print settings'), (0, _element.h)('div', '-right').children((0, _element.h)('div', "".concat(_config.cssPrefix, "-buttons")).children(new _button["default"]('cancel').on('click', btnClick.bind(this, 'cancel')), new _button["default"]('next', 'primary').on('click', btnClick.bind(this, 'next'))))), (0, _element.h)('div', "".concat(_config.cssPrefix, "-print-content")).children(this.contentEl = (0, _element.h)('div', '-content'), (0, _element.h)('div', '-sider').child((0, _element.h)('form', '').children((0, _element.h)('fieldset', '').children((0, _element.h)('label', '').child("".concat((0, _locale.t)('print.size'))), (_h = (0, _element.h)('select', '')).children.apply(_h, _toConsumableArray(PAGER_SIZES.map(function (it, index) {
       return (0, _element.h)('option', '').attr('value', index).child("".concat(it[0], " ( ").concat(it[1], "''x").concat(it[2], "'' )"));
-    }))).on('change', pagerSizeChange.bind(this))))))).hide();
+    }))).on('change', pagerSizeChange.bind(this))), (0, _element.h)('fieldset', '').children((0, _element.h)('label', '').child("".concat((0, _locale.t)('print.orientation'))), (_h2 = (0, _element.h)('select', '')).children.apply(_h2, _toConsumableArray(PAGER_ORIENTATIONS.map(function (it, index) {
+      return (0, _element.h)('option', '').attr('value', index).child("".concat((0, _locale.t)('print.orientations')[index]));
+    }))).on('change', pagerOrientationChange.bind(this))))))).hide();
   }
 
   _createClass(Print, [{
