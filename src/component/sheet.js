@@ -680,15 +680,21 @@ function dataSetCellText(text) {
 
 function insertDeleteRowColumn(type) {
   var data = this.data;
+  var ri = data.selector.ri;
+  var ci = data.selector.ci;
 
   if (type === 'insert-row') {
     data.insert('row');
+    this.trigger(type, data.rows, ri, ci);
   } else if (type === 'delete-row') {
     data["delete"]('row');
+    this.trigger(type, data.rows, ri, ci);
   } else if (type === 'insert-column') {
     data.insert('column');
+    this.trigger(type, data.rows, ri, ci);
   } else if (type === 'delete-column') {
     data["delete"]('column');
+    this.trigger(type, data.rows, ri, ci);
   } else if (type === 'delete-cell') {
     data.deleteCell();
   } else if (type === 'delete-cell-format') {
