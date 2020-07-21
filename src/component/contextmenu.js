@@ -75,21 +75,21 @@ var menuItems = [{
 }, {
   key: 'hide',
   title: (0, _locale.tf)('contextmenu.hide')
-}, 
-// {
-//   key: 'divider'
-// }, {
-//   key: 'validation',
-//   title: (0, _locale.tf)('contextmenu.validation')
-// }, {
-//   key: 'divider'
-// }, {
-//   key: 'cell-printable',
-//   title: (0, _locale.tf)('contextmenu.cellprintable')
-// }, {
-//   key: 'cell-non-printable',
-//   title: (0, _locale.tf)('contextmenu.cellnonprintable')
-// }, {
+}, {
+  key: 'divider'
+}, {
+  key: 'validation',
+  title: (0, _locale.tf)('contextmenu.validation')
+}, {
+  key: 'divider'
+}, {
+  key: 'cell-printable',
+  title: (0, _locale.tf)('contextmenu.cellprintable')
+}, {
+  key: 'cell-non-printable',
+  title: (0, _locale.tf)('contextmenu.cellnonprintable')
+},
+ {
 //   key: 'divider'
 // }, {
 //   key: 'cell-editable',
