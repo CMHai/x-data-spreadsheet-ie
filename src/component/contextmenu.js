@@ -89,7 +89,7 @@ var menuItems = [{
   key: 'cell-non-printable',
   title: (0, _locale.tf)('contextmenu.cellnonprintable')
 },
- {
+//  {
 //   key: 'divider'
 // }, {
 //   key: 'cell-editable',
