@@ -75,28 +75,30 @@ var menuItems = [{
 }, {
   key: 'hide',
   title: (0, _locale.tf)('contextmenu.hide')
-}, {
-  key: 'divider'
-}, {
-  key: 'validation',
-  title: (0, _locale.tf)('contextmenu.validation')
-}, {
-  key: 'divider'
-}, {
-  key: 'cell-printable',
-  title: (0, _locale.tf)('contextmenu.cellprintable')
-}, {
-  key: 'cell-non-printable',
-  title: (0, _locale.tf)('contextmenu.cellnonprintable')
-}, {
-  key: 'divider'
-}, {
-  key: 'cell-editable',
-  title: (0, _locale.tf)('contextmenu.celleditable')
-}, {
-  key: 'cell-non-editable',
-  title: (0, _locale.tf)('contextmenu.cellnoneditable')
-}];
+}, 
+// {
+//   key: 'divider'
+// }, {
+//   key: 'validation',
+//   title: (0, _locale.tf)('contextmenu.validation')
+// }, {
+//   key: 'divider'
+// }, {
+//   key: 'cell-printable',
+//   title: (0, _locale.tf)('contextmenu.cellprintable')
+// }, {
+//   key: 'cell-non-printable',
+//   title: (0, _locale.tf)('contextmenu.cellnonprintable')
+// }, {
+//   key: 'divider'
+// }, {
+//   key: 'cell-editable',
+//   title: (0, _locale.tf)('contextmenu.celleditable')
+// }, {
+//   key: 'cell-non-editable',
+//   title: (0, _locale.tf)('contextmenu.cellnoneditable')
+// }
+];
 
 function buildMenuItem(item) {
   var _this = this;
